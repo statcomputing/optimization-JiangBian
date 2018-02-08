@@ -511,15 +511,15 @@ gnapp <- function(r, K){
 z <- matrix(0,100,100,byrow = TRUE)
 for (i in 1:100){
   for(j in 1:100){
-    K <- 1000+5*j
-    r <- 0+0.005*i
+    K <- 0+12*j
+    r <- 0+0.01*i
     z[j,i] <- gnapp(r, K)
   }
 }
 
-r <- seq(0,0.5,length.out = 100)
-K <- seq(1000,1500,length.out = 100)
-contour(K,r,z)
+r <- seq(0,1,length.out = 100)
+K <- seq(0,1200,length.out = 100)
+contour(K,r,z, xlab = "K", ylab = "r")
 ```
 
 ##c
