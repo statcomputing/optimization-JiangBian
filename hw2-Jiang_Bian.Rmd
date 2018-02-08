@@ -471,14 +471,22 @@ plot(startp, thetas_2e, main='MLE Results', cex = 0.5,
 ```
 
 To divide the set of starting values into separate groups, with each group corresponding to a separate unique outcome of the optimization. We use the "unique" function to receive the index (the start value) of each group.
-```{r grouping}
+```{r unique}
 thetas_2ee <- as.data.frame(round(t(thetas_2e), digits = 2))
 colnames(thetas_2ee) <- c("MLE")
 uniq <- unique(thetas_2ee)
 knitr::kable(uniq)
 ```
 
-
+use split() instead of using unique() to group up.
+```{r split}
+grp <- split(startp, round(thetas_2e, digits = 4))
+minl <- sapply(grp, min)
+maxl <- sapply(grp, max)
+fingrp <- round(cbind(minl,maxl), digits = 4)
+colnames(fingrp) <- c("Lower Limit", "Upper Limit")
+knitr::kable(fingrp)
+```
 
 ####Q3
 
